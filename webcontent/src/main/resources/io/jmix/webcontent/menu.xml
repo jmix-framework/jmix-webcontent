@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+
+    <menu id="wc" title="msg://io.jmix.webcontent/menu.addon">
+        <item view="WebContent.list" title="msg://io.jmix.webcontent.view.webcontent/webContentListView.title"/>
+    </menu>
+
+</menu-config>

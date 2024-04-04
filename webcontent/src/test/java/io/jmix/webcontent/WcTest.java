@@ -1,0 +1,14 @@
+package io.jmix.webcontent;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+class WcTest {
+
+	@Test
+	void contextLoads() {
+	}
+}
