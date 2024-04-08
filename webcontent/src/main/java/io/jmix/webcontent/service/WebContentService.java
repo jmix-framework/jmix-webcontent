@@ -19,7 +19,7 @@ public class WebContentService {
 
     public WebContent findBySlug(String slug) {
         return dataManager.load(WebContent.class)
-                .query("select wc from WebContent wc " +
+                .query("select distinct wc from WebContent wc " +
                         "where wc.slug = :slug and (wc.lang = :lang or wc.lang = :lang_default)")
                 .parameter("slug", slug)
                 .parameter("lang", currentAuthentication.getLocale().getLanguage())
