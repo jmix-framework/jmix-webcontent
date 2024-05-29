@@ -24,7 +24,6 @@ subprojects {
     }
 
     jmix {
-        bomVersion = '2.3.999-SNAPSHOT'
         projectId = 'wc'
     }
 
