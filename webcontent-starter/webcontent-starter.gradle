@@ -1,4 +1,6 @@
-archivesBaseName = 'webcontent-starter'
+base {
+    archivesName = 'webcontent-starter'
+}
 
 jmix {
     entitiesEnhancing {

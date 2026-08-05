@@ -1,4 +1,6 @@
-archivesBaseName = 'webcontent'
+base {
+    archivesName = 'webcontent'
+}
 
 dependencies {
     implementation 'io.jmix.core:jmix-core-starter'
