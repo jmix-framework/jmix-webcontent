@@ -4,6 +4,32 @@ Allows to use content stored in database and editable from the admin area
 
 # Installation
 
+## From JitPack (no local build)
+
+Add the JitPack repository and depend on a released tag:
+
+```groovy
+repositories {
+    maven {
+        url = 'https://jitpack.io'
+        content {
+            // JitPack proxies all of Maven Central; without this, every unresolved artifact in your build
+            // would be retried against it.
+            includeGroup 'com.github.jmix-framework.jmix-webcontent'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.github.jmix-framework.jmix-webcontent:webcontent-starter:0.1.0'
+}
+```
+
+The group is `com.github.<owner>.<repo>` — how JitPack namespaces a GitHub project — and the version is the
+git tag. Releases are tagged in this repository; `0.1.0` is the first with Markdown support.
+
+## From a local build
+
 1. Checkout this repo
 2. build and publish artifacts to your Maven
 
@@ -13,7 +39,18 @@ Allows to use content stored in database and editable from the admin area
 3. Select Install Manually from Jmix Addon Manager and insert addon's artifactId 
 
 ```
-io.jmix.webcontent:webcontent-starter:0.0.1
+io.jmix.webcontent:webcontent-starter:0.1.0
+```
+
+## Releasing
+
+`jitpack.yml` pins JDK 21 (the add-on targets Java 21) and publishes under JitPack's own group via
+`-PpublishGroup`, so the starter's POM reference to the `webcontent` module resolves from the JitPack
+repository. Keep `version` in `build.gradle` equal to the tag you push, then request the new version once to
+trigger the build:
+
+```
+curl https://jitpack.io/com/github/jmix-framework/jmix-webcontent/webcontent-starter/<tag>/webcontent-starter-<tag>.pom
 ```
 
 # Content types
