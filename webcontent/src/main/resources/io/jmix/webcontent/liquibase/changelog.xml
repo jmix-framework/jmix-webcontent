@@ -34,5 +34,6 @@
     <property name="table_prefix" value="QRTZ_"/>
 
     <include file="io/jmix/webcontent/liquibase/changelog/001-webcontent.xml"/>
+    <include file="io/jmix/webcontent/liquibase/changelog/002-webcontent-md.xml"/>
 
 </databaseChangeLog>

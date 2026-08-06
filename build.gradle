@@ -7,8 +7,15 @@ buildscript {
     }
 }
 
-group = 'io.jmix.webcontent'
-version = '0.0.1'
+// Overridable so a JitPack build can publish under its own group (com.github.<owner>.<repo>). Without that,
+// the starter's POM would point at io.jmix.webcontent:webcontent, which does not exist in the JitPack
+// repository, and the transitive dependency would fail to resolve for consumers. Normal builds are unaffected.
+group = findProperty('publishGroup') ?: 'io.jmix.webcontent'
+version = findProperty('publishVersion') ?: '0.1.0'
+
+ext {
+    commonmarkVersion = '0.24.0'
+}
 
 subprojects {
     apply plugin: 'java-library'

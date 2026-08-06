@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- Markdown support: authoring format plus the Markdown source it is rendered from. -->
+    <changeSet id="1" author="webcontent">
+        <addColumn tableName="WEB_CONTENT">
+            <column name="TYPE" type="VARCHAR(50)"/>
+            <column name="SOURCE" type="CLOB"/>
+        </addColumn>
+    </changeSet>
+
+    <!-- Existing rows are hand-authored HTML; state that explicitly instead of leaving it to a null check. -->
+    <changeSet id="2" author="webcontent">
+        <update tableName="WEB_CONTENT">
+            <column name="TYPE" value="HTML"/>
+            <where>TYPE IS NULL</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

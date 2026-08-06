@@ -21,8 +21,24 @@
             <textField id="titleField" property="title"/>
             <textField id="slugField" property="slug"/>
             <textField id="langField" property="lang"/>
-            <textArea id="contentsField" height="9.5em" property="contents"/>
+            <comboBox id="typeField" property="type" required="true"/>
         </formLayout>
+
+        <!-- Exactly one editor is visible at a time, driven by typeField; see WebContentDetailView. -->
+        <markdownEditor id="sourceField"
+                        dataContainer="webContentDc"
+                        property="source"
+                        label="msg://io.jmix.webcontent.entity/WebContent.source"
+                        helperText="msg://sourceField.helperText"
+                        width="100%"
+                        height="30em"/>
+        <textArea id="contentsField"
+                  dataContainer="webContentDc"
+                  property="contents"
+                  label="msg://io.jmix.webcontent.entity/WebContent.contents"
+                  width="100%"
+                  height="20em"/>
+
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
             <button id="closeBtn" action="closeAction"/>

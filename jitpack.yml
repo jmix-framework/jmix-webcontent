@@ -1,0 +1,12 @@
+# JitPack build configuration.
+#
+# jdk: the add-on targets Java 21 (text blocks, HexFormat); JitPack's default JDK is older and would fail.
+#
+# install: publishes under JitPack's own group so the starter's POM reference to the `webcontent` module
+# resolves from the JitPack repository rather than pointing at a group that is not published there.
+# $VERSION is the tag being built, keeping the published version identical to the git tag.
+# Tests are skipped here: this step exists to produce artifacts, and the suite is run in normal builds.
+jdk:
+  - openjdk21
+install:
+  - ./gradlew publishToMavenLocal -PpublishGroup=com.github.jmix-framework.jmix-webcontent -PpublishVersion=$VERSION --no-daemon -x test

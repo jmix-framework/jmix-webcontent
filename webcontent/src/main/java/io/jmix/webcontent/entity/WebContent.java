@@ -36,6 +36,25 @@ public class WebContent {
     @Column(name = "LANG")
     private String lang;
 
+    /**
+     * Authoring format, see {@link WebContentType}. Defaults to {@code HTML} so an item created without
+     * touching this field behaves exactly as items did before the type existed.
+     */
+    @Column(name = "TYPE", length = 50)
+    private String type = WebContentType.HTML.getId();
+
+    /**
+     * The Markdown body of a {@link WebContentType#MD} item — the text an editor actually types. Rendered
+     * into {@link #contents} on every save; {@code null} for {@code HTML} items.
+     */
+    @Column(name = "SOURCE")
+    @Lob
+    private String source;
+
+    /**
+     * Servable HTML. Authored directly for {@code HTML} items, rendered from {@link #source} for {@code MD}
+     * ones — either way this is what consumers read, so it never holds Markdown.
+     */
     @Column(name = "CONTENTS")
     @Lob
     private String contents;
@@ -66,6 +85,22 @@ public class WebContent {
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public WebContentType getType() {
+        return type == null ? null : WebContentType.fromId(type);
+    }
+
+    public void setType(WebContentType type) {
+        this.type = type == null ? null : type.getId();
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public String getContents() {
